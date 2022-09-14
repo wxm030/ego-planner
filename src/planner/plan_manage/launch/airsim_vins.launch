@@ -4,7 +4,7 @@
     <arg name="map_size_y" value="100"/>
     <arg name="map_size_z" value=" 5"/>
 
-    <arg name="odom_topic" value="vins_estimator/odometry" />
+    <arg name="odom_topic" value="vins_estimator/odometry_flu" />
     <!--arg name="odom_topic" value="/airsim_node/drone_1/odom_local_ned" -->
 
   <!-- main algorithm params -->
@@ -18,21 +18,21 @@
     <!-- camera pose: transform of camera frame in the world frame -->
     <!-- depth topic: depth image, 640x480 by default -->
     <!-- don't set cloud_topic if you already set these ones! -->
-    <arg name="camera_pose_topic" value="camera_pose"/>
+    <!--arg name="camera_pose_topic" value="camera_pose"-->
     <arg name="depth_topic" value="/airsim_node/sgm_depth"/>
 
     <!-- topic of point cloud measurement, such as from LIDAR  -->
     <!-- don't set camera pose and depth, if you already set this one! -->
-    <arg name="cloud_topic" value="/pcl_render_node/cloud"/>
+    <!-- arg name="cloud_topic" value="/pcl_render_node/cloud"-->
 
     <!-- intrinsic params of the depth camera -->
     <arg name="cx" value="320"/>
     <arg name="cy" value="240"/>
-    <arg name="fx" value="268.511881977"/>
-    <arg name="fy" value="268.511881977"/>
+    <arg name="fx" value="320"/>
+    <arg name="fy" value="320"/>
 
     <!-- maximum velocity and acceleration the drone will reach -->
-    <arg name="max_vel" value="1.0" />
+    <arg name="max_vel" value="3.0" />
     <arg name="max_acc" value="2.0" />
 
     <!--always set to 1.5 times grater than sensing horizen-->
@@ -43,28 +43,29 @@
     <arg name="flight_type" value="2" />
     
     <!-- global waypoints -->
-    <!-- It generates a piecewise min-snap traj passing all waypoints -->
+    <!-- It generates a piecewise min-snap traj passing all waypoints FLU coordinate -->
     <arg name="point_num" value="5" />
 
     <arg name="point0_x" value="7.05" />
-    <arg name="point0_y" value="1.71" />
+    <arg name="point0_y" value="-1.71" />
     <arg name="point0_z" value="2.77" />
 
     <arg name="point1_x" value="19.04" />
-    <arg name="point1_y" value="-0.32" />
+    <arg name="point1_y" value="0.32" />
     <arg name="point1_z" value="3.62" />
 
     <arg name="point2_x" value="33.84" />
-    <arg name="point2_y" value="1.39" />
+    <arg name="point2_y" value="-1.39" />
     <arg name="point2_z" value="2.27" />
 
     <arg name="point3_x" value="57.06" />
-    <arg name="point3_y" value="0.72" />
+    <arg name="point3_y" value="-0.72" />
     <arg name="point3_z" value="2.25" />
 
     <arg name="point4_x" value="64.27" />
-    <arg name="point4_y" value="25.61" />
+    <arg name="point4_y" value="-25.61" />
     <arg name="point4_z" value="2.90" />
+
     
   </include>
 

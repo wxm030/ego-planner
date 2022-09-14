@@ -95,6 +95,4 @@
     <arg name="odometry_topic" value="$(arg odom_topic)" />
   </include>
 
-  <include file="$(find ego_planner)/launch/rviz.launch"/>
-
 </launch>
