@@ -88,9 +88,9 @@ void GridMap::initMap(ros::NodeHandle &nh)
 
   md_.proj_points_.resize(640 * 480 / mp_.skip_pixel_ / mp_.skip_pixel_);
   md_.proj_points_cnt = 0;
-  md_.cam2body_ << 0.0, 0.0, 1.0, 0.26,
-      1.0, 0.0, 0.0, -0.0475,
-      0.0, 1.0, 0.0, 0.0,
+  md_.cam2body_ << 0.0, 0.0, 1.0, 0.52,
+      -1.0, 0.0, 0.0, 0.0475,
+      0.0, -1.0, 0.0, 0.0,
       0.0, 0.0, 0.0, 1.0;
 
   /* init callback */
@@ -1000,6 +1000,12 @@ void GridMap::depthOdomCallback(const sensor_msgs::ImageConstPtr &img,
   md_.camera_pos_(1) = cam_T(1, 3);
   md_.camera_pos_(2) = cam_T(2, 3);
   md_.camera_q_ = Eigen::Quaterniond(cam_T.block<3, 3>(0, 0));
+
+  ROS_INFO("cam_T: %f, %f, %f, %f\n, %f, %f, %f, %f\n, %f, %f, %f, %f\n, %f, %f, %f, %f\n",
+           cam_T(0,0), cam_T(0,1), cam_T(0,2), cam_T(0,3), 
+           cam_T(1,0), cam_T(1,1), cam_T(1,2), cam_T(1,3), 
+           cam_T(2,0), cam_T(2,1), cam_T(2,2), cam_T(2,3), 
+           cam_T(3,0), cam_T(3,1), cam_T(3,2), cam_T(3,3));
 
   /* get depth image */
   cv_bridge::CvImagePtr cv_ptr;
